@@ -11,11 +11,11 @@ data class Reciter(val id: String, val name: String, val folder: String)
 object Reciters {
     // Sources: everyayah.com (free, per-ayah mp3)
     val list = listOf(
-        Reciter("dossary", "الشيخ ياسر الدوسري", "Yasser_Ad-Dussary_128kbps"),
-        Reciter("shaarawy", "الشيخ محمد متولي الشعراوي", "Alafasy_128kbps"), // انظر الملاحظة في README
-        Reciter("afasy", "الشيخ مشاري العفاسي", "Alafasy_128kbps"),
-        Reciter("basit", "الشيخ عبدالباسط عبدالصمد (مجود)", "Abdul_Basit_Mujawwad_128kbps"),
-        Reciter("sudais", "الشيخ عبدالرحمن السديس", "Abdurrahmaan_As-Sudais_192kbps")
+        Reciter("dossary", "الشيخ ياسر الدوسري (بدون نت)", "Yasser_Ad-Dussary_128kbps"),
+        Reciter("minshawi", "الشيخ محمد صديق المنشاوي (بدون نت)", "Minshawy_Murattal_128kbps"),
+        Reciter("afasy", "الشيخ مشاري العفاسي (يحتاج تحميل)", "Alafasy_128kbps"),
+        Reciter("basit", "الشيخ عبدالباسط عبدالصمد (يحتاج تحميل)", "Abdul_Basit_Mujawwad_128kbps"),
+        Reciter("sudais", "الشيخ عبدالرحمن السديس (يحتاج تحميل)", "Abdurrahmaan_As-Sudais_192kbps")
     )
     fun byId(id: String) = list.firstOrNull { it.id == id } ?: list[0]
 }
