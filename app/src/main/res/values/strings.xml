@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">محمد يحيى للقرآن</string>
+    <string name="choose_reciter">اختر القارئ</string>
+    <string name="download_surah">تحميل السورة للاستماع بدون نت</string>
+    <string name="search">بحث عن سورة</string>
+    <string name="play_all">تشغيل السورة كاملة</string>
+    <string name="stop">إيقاف</string>
+</resources>

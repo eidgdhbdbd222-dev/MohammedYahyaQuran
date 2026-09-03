@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.Quran" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/greenDark</item>
+        <item name="colorAccent">@color/gold</item>
+        <item name="android:windowBackground">@color/cream</item>
+    </style>
+</resources>
