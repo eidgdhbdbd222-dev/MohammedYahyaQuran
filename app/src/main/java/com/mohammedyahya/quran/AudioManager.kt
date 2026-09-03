@@ -32,6 +32,31 @@ object AudioStore {
         } catch (e: Exception) { false }
     }
 
+    @Volatile var cancelAll = false
+    @Volatile var downloadingAll = false
+
+    fun countDownloaded(ctx: Context, r: Reciter): Int {
+        val dir = File(ctx.filesDir, "audio/${r.id}")
+        return dir.listFiles()?.count { it.name.endsWith(".mp3") && it.length() > 0 } ?: 0
+    }
+
+    fun downloadAll(ctx: Context, r: Reciter, surahs: List<Surah>, onProgress: (Int, Int) -> Unit, onDone: (Boolean) -> Unit) {
+        if (downloadingAll) return
+        downloadingAll = true; cancelAll = false
+        Thread {
+            val total = surahs.sumOf { it.ayahs.size }
+            var done = 0; var allOk = true
+            outer@ for (s in surahs) for (a in s.ayahs) {
+                if (cancelAll) { allOk = false; break@outer }
+                if (!download(ctx, r, s.num, a.num)) { allOk = false }
+                done++
+                if (done % 5 == 0 || done == total) onProgress(done, total)
+            }
+            downloadingAll = false
+            onDone(allOk)
+        }.start()
+    }
+
     fun downloadSurah(ctx: Context, r: Reciter, surah: Surah, onProgress: (Int, Int) -> Unit, onDone: (Int) -> Unit) {
         pool.execute {
             var ok = 0
